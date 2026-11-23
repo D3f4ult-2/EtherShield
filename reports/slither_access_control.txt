@@ -1,0 +1,16 @@
+'forge clean' running (wd: /home/fourat/EtherShield)
+'forge config --json' running
+'forge build --build-info --deny never --skip ./test/** ./script/** --force' running (wd: /home/fourat/EtherShield)
+INFO:Detectors:
+Detector: missing-zero-check
+VulnerableTreasury.setOwner(address).newOwner (src/vulnerable/VulnerableTreasury.sol#16) lacks a zero-check on :
+		- owner = newOwner (src/vulnerable/VulnerableTreasury.sol#17)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+INFO:Detectors:
+Detector: low-level-calls
+Low level call in SecureTreasury.emergencyWithdraw() (src/secure/SecureTreasury.sol#35-38):
+	- (ok,None) = owner.call{value: address(this).balance}() (src/secure/SecureTreasury.sol#36)
+Low level call in VulnerableTreasury.emergencyWithdraw() (src/vulnerable/VulnerableTreasury.sol#25-29):
+	- (ok,None) = owner.call{value: address(this).balance}() (src/vulnerable/VulnerableTreasury.sol#27)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:. analyzed (2 contracts with 102 detectors), 3 result(s) found
